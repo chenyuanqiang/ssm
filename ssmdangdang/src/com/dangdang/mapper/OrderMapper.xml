@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dangdang.OrderDao.OrderDao">
+
+	<resultMap type="Order" id="Order">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="address" column="address"/>
+		<result property="userid" column="userid"/>
+		<result property="tel" column="tel"/>
+	</resultMap>
+	<insert id="addorder"  parameterType="Order" useGeneratedKeys="true" keyProperty="id" >
+	insert into orders set name=#{name},address=#{address},subaddress=#{address},userid=#{userid},tel=#{tel}
+	</insert>
+</mapper> 

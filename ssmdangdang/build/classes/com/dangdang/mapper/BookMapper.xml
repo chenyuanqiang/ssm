@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dangdang.BookDao.BookDao">
+
+	<resultMap type="Book" id="BookResult">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="price" column="price"/>
+		<result property="publish" column="publish"/>
+		<result property="url" column="url"/>
+		<result property="jifen" column="jifen"/>
+	</resultMap>
+	<select id="getallBook" parameterType="Page"  resultMap="BookResult" >
+	select * from book limit #{startPos},#{pageSzie}
+	</select>
+	<select id="GetBookNumber"  resultType="Integer">
+	select count(*) from book
+	</select>
+	<select id="showBookById" parameterType="Integer" resultMap="BookResult">
+	select * from book where id=#{id}
+	</select>
+	<update id="update" parameterType="Book" >
+	update book set name=#{name},price=#{price},publish=#{publish} where id=#{id}
+	</update>
+	<delete id="delete" parameterType="Integer">
+	delete from book where id=#{id}
+	</delete>
+	<insert id="add"  parameterType="Book">
+	insert into book set name=#{name},price=#{price},publish=#{publish}
+	</insert>
+</mapper> 
